@@ -1,0 +1,134 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="pragma" content="no-cache" />
+    <meta http-equiv="expires" content="-1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Internet hotspot - Log in</title>
+    <link rel="stylesheet" href="css/style.css">
+    <script src="/md5.js"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f0f0f0;
+            margin: 0;
+        }
+
+        .main {
+            background: #e0e0e0; /* Изменён цвет фона на серый */
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            width: 90%;
+            max-width: 400px;
+            text-align: center;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        label {
+            display: flex;
+            align-items: center;
+            width: 100%;
+            margin-bottom: 15px;
+        }
+
+        input[type="email"] {
+            flex: 1;
+            padding: 12px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-sizing: border-box;
+        }
+
+        input[type="submit"] {
+            width: 100%;
+            padding: 12px;
+            margin-top: 10px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            pointer-events: none;
+            opacity: 0.6;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #0056b3;
+        }
+
+        .consent {
+            display: flex;
+            align-items: center;
+            justify-content: flex-start;
+            margin-top: 10px;
+            width: 100%;
+        }
+
+        .consent input[type="checkbox"] {
+            margin-right: 10px;
+            width: 18px;
+            height: 18px;
+        }
+
+        @media (max-width: 600px) {
+            .main {
+                padding: 15px;
+            }
+
+            input[type="email"], input[type="submit"] {
+                padding: 10px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="main">
+        <div class="wrap animated fadeIn">
+            <form name="emailForm" onsubmit="return handleEmailSubmit()">
+                <label>
+                    <input name="email" type="email" placeholder="Введите ваш email" required />
+                </label>
+
+                <div class="consent">
+                    <input type="checkbox" id="consentCheckbox" onclick="toggleSubmitButton()">
+                    <label for="consentCheckbox">Я даю своё согласие на обработку своих данных</label>
+                </div>
+
+                <input type="submit" value="Отправить" id="submitButton" />
+            </form>
+        </div>
+    </div>
+
+    <script>
+        function toggleSubmitButton() {
+            var checkbox = document.getElementById('consentCheckbox');
+            var submitButton = document.getElementById('submitButton');
+            if (checkbox.checked) {
+                submitButton.disabled = false;
+                submitButton.style.pointerEvents = "auto";
+                submitButton.style.opacity = "1";
+            } else {
+                submitButton.disabled = true;
+                submitButton.style.pointerEvents = "none";
+                submitButton.style.opacity = "0.6";
+            }
+        }
+    </script>
+</body>
+
+</html>
